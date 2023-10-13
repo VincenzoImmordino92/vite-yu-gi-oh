@@ -2,12 +2,14 @@
 
 import OggettoCard from './partials/OggettoCard.vue'
 import Risultato from './partials/Risultato.vue'
+import { store } from '../data/store';
+
 
 export default{
   name:'ContainerCards',
   data(){
     return{
-
+      store
     }
   },
   components:{
@@ -19,19 +21,18 @@ export default{
 
 <template>
 
-<div class=" custom ">
+<div class="container custom">
   <Risultato />
   <div class="row">
 
   
-  <OggettoCard />
-  <OggettoCard />
-  <OggettoCard />
-  <OggettoCard />
-  <OggettoCard />
-  <OggettoCard />
-  <OggettoCard />
-  <OggettoCard />
+  <OggettoCard v-for="card in store.oggettiList" 
+                :key="card.id"
+                :name="card.name"
+                :archetype="card.archetype"
+                :image="card.card_images[0].image_url_small"
+              />
+  
 
   </div>
 
@@ -47,6 +48,7 @@ export default{
   background-color: white;
   margin: 0 auto;
   width: 100%;
+  margin: 30px;
   border: 1px solid black;
  
 }

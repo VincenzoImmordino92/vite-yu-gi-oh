@@ -1,18 +1,23 @@
 <script >
 export default{
-  name:'OggettoCard'
+  name:'OggettoCard',
+  props:{
+    name:String,
+    archetype:String,
+    image:String
+  }
 }
 
 </script>
 
 <template>
 <div class="col-3 card_ctm">
-  <img src="#" alt="card">
-  <h4>title</h4>
-  <p>specie</p>
+  <img :src="image" :alt="name">
+  <h4>{{ name }}</h4>
+  <p>{{ archetype }}</p>
 </div>
 
-  </template>
+</template>
 
 <style lang="scss">
 @use '../../scss/partials/variabili' as*;
@@ -20,7 +25,7 @@ export default{
 .card_ctm{
   text-align: center;
   margin-bottom: 10px;
-  padding: 20px;
+  padding: px;
   border: 1px solid black;
   background-color: $primary-color;
   h4{
